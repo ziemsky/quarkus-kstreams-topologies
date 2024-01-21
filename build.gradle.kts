@@ -15,6 +15,9 @@ val quarkusPlatformVersion: String by project
 dependencies {
     implementation(enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}"))
 
+//    // only to activate DEV UI
+//    implementation("io.quarkus:quarkus-resteasy-reactive")
+
     implementation("io.quarkus:quarkus-kafka-streams")
 
     implementation("io.quarkus:quarkus-arc")

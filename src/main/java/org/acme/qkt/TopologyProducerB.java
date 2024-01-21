@@ -12,14 +12,21 @@ import org.apache.kafka.streams.kstream.Consumed;
 public class TopologyProducerB {
     
     @Produces
+    // @TopologyB
     public Topology topologyB() {
+
+        Log.infof("Building topologyB");
+
         final StreamsBuilder streamsBuilder = new StreamsBuilder();
         
         streamsBuilder
             .stream("topic-b", Consumed.with(Serdes.String(), Serdes.String()))
-
             .foreach((key, value) -> Log.infof("Consuming from topic-b %s : %s", key, value));
-        
-        return streamsBuilder.build();
+
+        final Topology topology = streamsBuilder.build();
+
+        Log.infof("topologyB: %s", topology.describe().toString());
+
+        return topology;
     }
 }
